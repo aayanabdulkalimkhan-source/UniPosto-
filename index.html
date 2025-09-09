@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>UniPosto – One Dashboard, All Socials</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .curve{border-radius:8px}body{font-family:Arial;background:#111;color:#0f0}
+  </style>
+</head>
+<body class="p-4">
+  <header class="flex justify-between items-center mb-4">
+    <div class="flex items-center space-x-2">
+      <span class="text-2xl font-bold">🏠 UniPosto</span>
+      <span class="text-sm">One click → post everywhere</span>
+    </div>
+    <div class="flex space-x-2">
+      <button id="uploadBtn" class="bg-blue-500 text-white px-3 py-1 curve">+ Upload</button>
+      <button id="notifBtn" class="bg-gray-700 text-white px-3 py-1 curve">🔔</button>
+      <button id="helpBtn" class="bg-gray-700 text-white px-3 py-1 curve">❓</button>
+      <input id="searchInp" class="bg-gray-800 text-white px-2 py-1 curve" placeholder="Search…">
+      <button id="loginBtn" class="bg-green-500 text-white px-3 py-1 curve">Login</button>
+    </div>
+  </header>
+
+  <main class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- Upload modal will be injected here -->
+    <section id="uploadModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+      <div class="bg-white text-black p-4 w-11/12 max-w-4xl curve">
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="text-xl font-bold">Create Post</h2>
+          <button id="closeModal" class="text-gray-500">✖</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block mb-1">Caption</label>
+            <textarea id="caption" class="w-full border rounded p-2" rows="3" placeholder="Write caption…"></textarea>
+            <label class="block mt-2 mb-1">Upload</label>
+            <input type="file" id="fileInput" accept="video/*,image/*" class="mb-2"/>
+            <div id="preview" class="mb-2"></div>
+          </div>
+          <div id="platformGrid" class="grid grid-cols-2 gap-2 text-sm"></div>
+        </div>
+        <div class="flex justify-end mt-4 space-x-2">
+          <button id="selectAll" class="bg-gray-600 text-white px-3 py-1 curve">Select All</button>
+          <button id="uploadAll" class="bg-green-500 text-white px-3 py-1 curve">Upload All</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notification modal -->
+    <section id="notifModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+      <div class="bg-white text-black p-4 w-11/12 max-w-4xl curve">
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="text-xl font-bold">Notifications</h2>
+          <button id="closeNotif" class="text-gray-500">✖</button>
+        </div>
+        <div id="notifList" class="space-y-2 text-sm"></div>
+        <div class="mt-4"><button id="clearNotif" class="bg-gray-600 text-white px-3 py-1 curve">Clear All</button></div>
+      </div>
+    </section>
+
+    <!-- Help modal -->
+    <section id="helpModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+      <div class="bg-white text-black p-4 w-11/12 max-w-4xl curve">
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="text-xl font-bold">Help</h2>
+          <button id="closeHelp" class="text-gray-500">✖</button>
+        </div>
+        <input id="helpSearch" class="w-full border rounded p-2 mb-2" placeholder="Search help…">
+        <div id="helpList" class="space-y-2 text-sm"></div>
+      </div>
+    </section>
+
+    <!-- Content / Analytics / Settings / Report modals will be added next -->
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
